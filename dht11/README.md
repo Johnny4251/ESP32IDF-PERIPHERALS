@@ -42,7 +42,7 @@ set(EXTRA_COMPONENT_DIRS components/dht11)
 
 ### Example Usage
 
-Here's an example `main.c` file to demonstrate how to use the DHT11 driver:
+Here's an example to demonstrate how to use the DHT11 driver:
 
 ```c
 #include "dht11.h"
