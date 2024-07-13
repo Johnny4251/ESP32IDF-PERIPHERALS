@@ -21,7 +21,7 @@ This repository contains a driver for the HC-SR04 ultrasonic distance sensor, de
 1. Clone this repository or download the `hcsr04.c` and `hcsr04.h` files.
 2. Copy the `hcsr04.c` and `hcsr04.h` files into your project's `components` directory.
 
-Your project structure should look like this:
+Your project structure could look like this:
 ```
 your_project/
 ├── components/
