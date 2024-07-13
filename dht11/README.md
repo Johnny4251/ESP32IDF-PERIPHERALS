@@ -45,32 +45,20 @@ set(EXTRA_COMPONENT_DIRS components/dht11)
 Here's an example `main.c` file to demonstrate how to use the DHT11 driver:
 
 ```c
-#include <stdio.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "dht11.h"
 
-void app_main(void)
-{
-    printf("DHT11 sensor example");
+void app_main(void) {
+    DHT11_init(GPIO_NUM_19);
 
-    // Initialize the DHT11 sensor
-    dht11_init(GPIO_NUM_4); // Use GPIO 4 for the DHT11 data pin
-
-    while (1)
-    {
-        int16_t temperature = dht11_read().temperature;
-        int16_t humidity = dht11_read().humidity;
-
-        if (temperature != DHT11_ERROR && humidity != DHT11_ERROR) {
-            printf("Temperature: %d°C", temperature);
-            printf("Humidity: %d%%", humidity);
+    while(1) {
+        DHT11_Data data = dht11_read();
+        if (data.status == DHT11_OK) {
+            ESP_LOGI("DHT11", "Temperature: %.2f *F, Relative Humidity: %d%%", data.fahrenheit, data.humidity);
+            //ESP_LOGI("DHT11", "Temperature: %.2f *C, Relative Humidity: %d%%", data.celsius, data.humidity);
+        } else {
+            ESP_LOGE("DHT11", "Failed to read data from DHT11 sensor");
         }
-        else {
-            printf("Failed to read from DHT11 sensor");
-        }
-
-        vTaskDelay(2000 / portTICK_PERIOD_MS); 
+        vTaskDelay(500 / portTICK_PERIOD_MS);
     }
 }
 ```
