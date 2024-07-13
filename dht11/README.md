@@ -52,8 +52,7 @@ Here's an example `main.c` file to demonstrate how to use the DHT11 driver:
 
 void app_main(void)
 {
-    printf("DHT11 sensor example
-");
+    printf("DHT11 sensor example");
 
     // Initialize the DHT11 sensor
     dht11_init(GPIO_NUM_4); // Use GPIO 4 for the DHT11 data pin
@@ -63,20 +62,15 @@ void app_main(void)
         int16_t temperature = dht11_read().temperature;
         int16_t humidity = dht11_read().humidity;
 
-        if (temperature != DHT11_ERROR && humidity != DHT11_ERROR)
-        {
-            printf("Temperature: %d°C
-", temperature);
-            printf("Humidity: %d%%
-", humidity);
+        if (temperature != DHT11_ERROR && humidity != DHT11_ERROR) {
+            printf("Temperature: %d°C", temperature);
+            printf("Humidity: %d%%", humidity);
         }
-        else
-        {
-            printf("Failed to read from DHT11 sensor
-");
+        else {
+            printf("Failed to read from DHT11 sensor");
         }
 
-        vTaskDelay(2000 / portTICK_PERIOD_MS); // Delay for 2 seconds
+        vTaskDelay(2000 / portTICK_PERIOD_MS); 
     }
 }
 ```
