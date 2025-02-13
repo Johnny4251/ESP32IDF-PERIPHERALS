@@ -35,7 +35,7 @@ int _wait_for_response(const uint8_t time_us, const int level) {
 }
 
 
-float _celsius_to_farenheit(const uint8_t celsius) {
+float _celsius_to_farenheit(const float celsius) {
     return (float) ((celsius) * 9.0/5.0) + 32.0;
 }
 
