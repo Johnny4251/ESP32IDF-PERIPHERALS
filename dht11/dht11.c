@@ -102,9 +102,9 @@ DHT11_Data dht11_read() {
 
     // Fill struct
     dht11_data.last_read = esp_timer_get_time();
-    dht11_data.humidity = data[0];
-    dht11_data.celsius = data[2];
-    dht11_data.fahrenheit = _celsius_to_farenheit(data[2]);
+    dht11_data.humidity = data[0] + (data[1] / 10.0);
+    dht11_data.celsius = data[2] + (data[3] / 10.0);
+    dht11_data.fahrenheit = _celsius_to_farenheit(dht11_data.celsius);
     dht11_data.status = DHT11_OK;
 
     return dht11_data;
