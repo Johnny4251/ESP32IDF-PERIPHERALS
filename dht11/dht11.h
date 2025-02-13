@@ -19,7 +19,7 @@ typedef struct {
     int64_t last_read;
     float fahrenheit;
     float celsius;
-    int humidity;
+    float humidity;
 } DHT11_Data;
 
 /**
