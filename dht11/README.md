@@ -53,8 +53,8 @@ void app_main(void) {
     while(1) {
         DHT11_Data data = dht11_read();
         if (data.status == DHT11_OK) {
-            ESP_LOGI("DHT11", "Temperature: %.2f *F, Relative Humidity: %d%%", data.fahrenheit, data.humidity);
-            //ESP_LOGI("DHT11", "Temperature: %.2f *C, Relative Humidity: %d%%", data.celsius, data.humidity);
+            ESP_LOGI("DHT11", "Temperature: %.2f *F, Relative Humidity: %.2f%%", data.fahrenheit, data.humidity);
+            ESP_LOGI("DHT11", "Temperature: %.2f *C, Relative Humidity: %.2f%%", data.celsius, data.humidity);
         } else {
             ESP_LOGE("DHT11", "Failed to read data from DHT11 sensor");
         }
