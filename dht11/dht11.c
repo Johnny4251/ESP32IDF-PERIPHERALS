@@ -90,6 +90,9 @@ DHT11_Data dht11_read() {
             dht11_data.status = DHT11_ERROR;
             return dht11_data;
         }
+        /* To explain this witchcraft.. */
+        /* fyi - dht11 reads MSB first */
+        /* In data[i / 8], turn on the bit (7 - (i % 8)) by OR-ing with 1 << (7 - (i % 8)). */
         if (bit_response > 28)
             data[i / 8] |= (1 << (7 - (i % 8)));
     }
